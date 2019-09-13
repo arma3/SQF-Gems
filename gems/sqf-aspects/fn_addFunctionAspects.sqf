@@ -92,9 +92,9 @@ if (_mode isEqualTo FUNCS_BY_TAG) then {
         GEM_ignoreFunctions append (_classNames select { ([(configFile >> "CfgFunctions" >> _tag >> _category >> _x), "ignoreAspect", 0] call BIS_fnc_returnConfigEntry) > 0 });
     } forEach _funcCategories;
     GEM_ignoreFunctions = GEM_ignoreFunctions apply { toLower (_fullPrefix + _x) };
-    DEBUG2("aspects won't be applied to following functions: %1", GEM_ignoreFunctions);
+    diag_log format["aspects won't be applied to following functions: %1", GEM_ignoreFunctions];
 
-    DEBUG2("enriching functions for tag: %1", (toUpper _tag));
+    diag_log format["enriching functions for tag: %1", (toUpper _tag)];
     private _taggedFunctionSignatures = allVariables missionNamespace select {[_fullPrefix, _x] call BIS_fnc_inString };
     { _x call _enrichFunction; } forEach _taggedFunctionSignatures;
 };
