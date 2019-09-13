@@ -1,6 +1,6 @@
 # SQF-Aspects
 * Author: xetra11
-* Credits: ArmA3 Discord #scripting Community
+* Credits: Arma3 Discord #scripting Community
 ## Description
 This function will add script logic around an existing function. The added logic can be appended before
 and after the original function.
