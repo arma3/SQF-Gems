@@ -16,7 +16,7 @@ Add logic around all functions defined by a tag `myTag`. So all functions starti
 ```arma.sqf
 [{ diag_log ">> __FUNC_NAME__"},
 {diag_log "<< __FUNC_NAME__"},
-[0,"myTag"]] call coopr_fnc_addFunctionAspects;
+[0,"myTag"]] call gem_fnc_addFunctionAspects;
 ```
 ### Ignore Functions
 If you want to skip some functions when using the *tag-mode* (mentioned above) then you can add an
@@ -35,7 +35,7 @@ Now this function will be ignored and not 'enriched'.
  ```arma.sqf
 [{ diag_log "before func"},
 {diag_log "after func"},
-[1,"myTag_fnc_myFooFunc"]] call coopr_fnc_addFunctionAspects;
+[1,"myTag_fnc_myFooFunc"]] call gem_fnc_addFunctionAspects;
 ```
 ## Known Issues
 * Has not been tested in a non `allowRecompile` environment
