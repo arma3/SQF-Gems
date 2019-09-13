@@ -58,7 +58,7 @@ private _functionNameOrTags = _enrichmentMode select 1;
 private _enrichFunction = {
     params ["_functionSignature"];
     if (_functionSignature in IGNORE_FUNCTIONS) then {
-        DEBUG2("ignore function enrichment for %1", _functionSignature);
+        diag_log format["ignore function enrichment for %1", _functionSignature];
     } else {
         // preprocess special keywords
         // replace __FUNC_NAME__ with function name
@@ -66,7 +66,7 @@ private _enrichFunction = {
         _processedAfterAspect = [str _afterAspect, "__FUNC_NAME__", _functionSignature] call coopr_fnc_stringReplace;
 
         private _function = missionNamespace getVariable _functionSignature;
-        DEBUG2("enriching function: %1", _functionSignature);
+        diag_log format["enriching function: %1", _functionSignature];
 
         if !(isNil "_function") then {
             private _enrichedFunction = format ["
