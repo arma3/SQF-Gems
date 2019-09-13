@@ -43,14 +43,14 @@ if (isNil "GEM_ignoreFunctions") then {
     GEM_ignoreFunctions = [];
 };
 
-if (_beforeAspect isEqualTo {}) exitWith { ERROR("_beforeAspect was not defined") };
-if (_afterAspect isEqualTo {}) exitWith { ERROR("_afterAspect was not defined") };
-if (_enrichmentMode isEqualTo []) exitWith { ERROR("_enrichmentMode was not defined") };
+if (_beforeAspect isEqualTo {}) exitWith { diag_log format["_beforeAspect was not defined"] };
+if (_afterAspect isEqualTo {}) exitWith { diag_log format["_afterAspect was not defined"] };
+if (_enrichmentMode isEqualTo []) exitWith { diag_log format["_enrichmentMode was not defined"] };
 
 if (typeName _afterAspect isEqualTo "STRING") then { _beforeAspect = compile _afterAspect };
-if !(typeName _afterAspect isEqualTo "CODE") exitWith { ERROR("_afterAspect is not code") };
+if !(typeName _afterAspect isEqualTo "CODE") exitWith { diag_log format["_afterAspect is not code"] };
 if (typeName _beforeAspect isEqualTo "STRING") then { _beforeAspect = compile _beforeAspect };
-if !(typeName _beforeAspect isEqualTo "CODE") exitWith { ERROR("_beforeAspect is not code") };
+if !(typeName _beforeAspect isEqualTo "CODE") exitWith { diag_log format["_beforeAspect is not code"] };
 
 private _mode = _enrichmentMode select 0;
 private _functionNameOrTags = _enrichmentMode select 1;
