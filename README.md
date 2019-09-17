@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 # SQF-Gems
 A collection of SQF functions that are considered **gems** because of their convenient nature.
 ## Gem List
