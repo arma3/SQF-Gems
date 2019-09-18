@@ -1,4 +1,4 @@
-# SQF-Aspects
+# Code as String
 * Author: X39
 * Credits: Arma3 Discord #scripting Community
 ## Description
