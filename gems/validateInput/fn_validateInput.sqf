@@ -17,9 +17,9 @@
  *
  *	Examples:
  *		# SQF
-*			['My Super Text!', ['A-Z', 'a-z', '0-9'], -1, '...', true] call Gems_fnc_validateInput; 
-*			// Returns: "MySuperText"
-*			// Alows an unlimited number of alpha-numerical characters to be inputed.
+ *			['My Super Text!', ['A-Z', 'a-z', '0-9'], -1, '...', true] call Gems_fnc_validateInput; 
+ *			// Returns: "MySuperText"
+ *			// Alows an unlimited number of alpha-numerical characters to be inputed.
  *	
  *			['My Super Text!', ['A-Z', 'a-z', '0-9', ' '], -1, '...', true] call Gems_fnc_validateInput; 
  *			// Returns: "My Super Text"
