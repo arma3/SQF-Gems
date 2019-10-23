@@ -1,5 +1,5 @@
 /*
- *	Author: Heyoxe
+ *	Author: Heyoxe (https://github.com/Heyoxe/)
  *		Check if Input is valid.
  *		To add the input validation on the control, add the "onKeyDown" and "onKeyUp" eventHandler to the control.
  *
@@ -15,11 +15,45 @@
  *
  *	Return Value: <BOOLEAN>: text is valid or not or <STRING>: if controlOrText is a <STRING> and replace i set to true, returns validated String.
  *
- *	Example:
- *		[_control, ['0-9'], 6, false, '1', true] call Gems_fnc_validateInput; // Only allow '0123456789' to be inputed and will limit size to 6 and will automaticaly correct the control's input. If nothing set, fallbacks to 1.
- *		['My Super Text', ['_'], -1, '...', true] call Gems_fnc_validateInput; // Only allow '_' to be inputed but you can add as many as you want. If text is not good, will return '...'.
- *		['My Super Text', ['_'], -1, '...', false] call Gems_fnc_validateInput; // Only allow '_' to be inputed but you can add as many as you want. If text is not good, will return false, else, it will return true.
+ *	Examples:
+ *		# SQF
+*			['My Super Text!', ['A-Z', 'a-z', '0-9'], -1, '...', true] call Gems_fnc_validateInput; 
+*			// Returns: "MySuperText"
+*			// Alows an unlimited number of alpha-numerical characters to be inputed.
+ *	
+ *			['My Super Text!', ['A-Z', 'a-z', '0-9', ' '], -1, '...', true] call Gems_fnc_validateInput; 
+ *			// Returns: "My Super Text"
+ *			// Alows an unlimited number of alpha-numerical + [spaces] characters to be inputed.
  *
+ *			['My Super Text!', ['A-Z', 'a-z', '0-9', ' '], 2, '...', true] call Gems_fnc_validateInput; 
+ *			// Returns: "My"
+ *			// Alows 2 alpha-numerical + [spaces] characters to be inputed.
+ *
+ *			['My Super Text!', ['_'], -1, '...', true] call Gems_fnc_validateInput; 
+ *			// Returns: "..."
+ *			// Only allow '_' to be inputed but you can add as many as you want. If text is not good, will return '...'.
+ *
+ *			['My Super Text!', ['_'], -1, '...', false] call Gems_fnc_validateInput; 
+ *			// Returns: false
+ *			// Only allow '_' to be inputed but you can add as many as you want. If text is not good, will return false, else, it will return true.
+ *
+ *		# Configs
+ * 			// This code will only allow numbers up to 6 digits and positive to be inputed. If the user types anything else, it will remove that from the input or if nothing is set, it wil fallback to 1.
+ *			class MySuperDialog {
+ *				idd = -1;
+ *				class Controls {
+ *					class MyInput: RscEdit {
+ *						idc = -1;
+ *						x = 0;
+ *						y = 0;
+ *						w = safeZoneW;
+ *						h = safeZoneH;
+ *						text = "1";
+ *						onKeyDown = "[(_this#0), ['0-9'], 6, false, '1', true] call CoopR_fnc_validateInput";
+ *						onKeyUp = "[(_this#0), ['0-9'], 6, false, '1', true] call CoopR_fnc_validateInput";
+ *					;  
+ *				};
+ *			};
  */
 
 params [
