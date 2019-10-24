@@ -26,23 +26,23 @@ To add the input validation on the control, add the "onKeyDown" and "onKeyUp" ev
 ## Example:
 ### In Script:
 ```SQF
-['My Super Text!', ['A-Z', 'a-z', '0-9'], -1, '...', true] call Gems_fnc_validateInput; 
+['My Super Text!', ['A-Z', 'a-z', '0-9'], -1, false, '...', true] call Gems_fnc_validateInput; 
 // Returns: "MySuperText"
 // Alows an unlimited number of alpha-numerical characters to be inputed.
 
-['My Super Text!', ['A-Z', 'a-z', '0-9', ' '], -1, '...', true] call Gems_fnc_validateInput; 
+['My Super Text!', ['A-Z', 'a-z', '0-9', ' '], -1, false, '...', true] call Gems_fnc_validateInput; 
 // Returns: "My Super Text"
 // Alows an unlimited number of alpha-numerical + [spaces] characters to be inputed.
 
-['My Super Text!', ['A-Z', 'a-z', '0-9', ' '], 2, '...', true] call Gems_fnc_validateInput; 
+['My Super Text!', ['A-Z', 'a-z', '0-9', ' '], 2, false, '...', true] call Gems_fnc_validateInput; 
 // Returns: "My"
 // Alows 2 alpha-numerical + [spaces] characters to be inputed.
 
-['My Super Text!', ['_'], -1, '...', true] call Gems_fnc_validateInput; 
+['My Super Text!', ['_'], -1, false, '...', true] call Gems_fnc_validateInput; 
 // Returns: "..."
 // Only allow '_' to be inputed but you can add as many as you want. If text is not good, will return '...'.
 
-['My Super Text!', ['_'], -1, '...', false] call Gems_fnc_validateInput; 
+['My Super Text!', ['_'], -1, false, '...', false] call Gems_fnc_validateInput; 
 // Returns: false
 // Only allow '_' to be inputed but you can add as many as you want. If text is not good, will return false, else, it will return true.
 ```
