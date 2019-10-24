@@ -49,8 +49,8 @@
  *						w = safeZoneW;
  *						h = safeZoneH;
  *						text = "1";
- *						onKeyDown = "[(_this#0), ['0-9'], 6, false, '1', true] call CoopR_fnc_validateInput";
- *						onKeyUp = "[(_this#0), ['0-9'], 6, false, '1', true] call CoopR_fnc_validateInput";
+ *						onKeyDown = "[(_this#0), ['0-9'], 6, false, '1', true] call Gems_fnc_validateInput";
+ *						onKeyUp = "[(_this#0), ['0-9'], 6, false, '1', true] call Gems_fnc_validateInput";
  *					;  
  *				};
  *			};

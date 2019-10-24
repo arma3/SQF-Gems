@@ -19,7 +19,9 @@ To add the input validation on the control, add the "onKeyDown" and "onKeyUp" ev
 ```
 
 ## Return Value:
-`<BOOLEAN>: text is valid or not or <STRING>: if controlOrText is a <STRING> and replace i set to true, returns validated String.`
+```MD
+<BOOLEAN>: text is valid or not or <STRING>: if controlOrText is a <STRING> and replace i set to true, returns validated String.
+```
 
 ## Example:
 ### In Script:
@@ -58,8 +60,8 @@ class MySuperDialog {
 			w = safeZoneW;
 			h = safeZoneH;
 			text = "1";
-			onKeyDown = "[(_this#0), ['0-9'], 6, false, '1', true] call CoopR_fnc_validateInput";
-			onKeyUp = "[(_this#0), ['0-9'], 6, false, '1', true] call CoopR_fnc_validateInput";
+			onKeyDown = "[(_this#0), ['0-9'], 6, false, '1', true] call Gems_fnc_validateInput";
+			onKeyUp = "[(_this#0), ['0-9'], 6, false, '1', true] call Gems_fnc_validateInput";
 		};  
 	};
 };
