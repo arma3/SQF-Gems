@@ -7,14 +7,14 @@ To add the input validation on the control, add the "onKeyDown" and "onKeyUp" ev
 
 ## Arguments:
 ```MD
-0 - _textOrControl: <STRING or CONTROL> Text or Control to check.
-1 - _allowedCharacters: <ARRAY> Array of allowed Characters.
+0 - _textOrControl: <STRING> or <CONTROL> Text or Control to check.
+1 - _allowedCharacters: <ARRAY> (default: ["A-Z", "a-z", "0-9"]) Array of allowed Characters.
   0: <STRING> String of allowed characters, use predefined (A-Z, a-z or 0-9) or use custom.
   n: [...]
-2 - _maxChar: <SCALAR> Maximum number of characters allowed.
-3 - _allowEmpty <BOOLEAN> Allows the value to be equal to "".
-4 - _fallbackValue: <STRING> Strings wich is set if empty input value is detected.
-5 - _replace: <BOOLEAN> If _textOrControl is a <STRING>, it will return the string with only the valid characters, if it is a <CONTROL>, it will replace the text inside the control with the valid text.
+2 - _maxChar: <SCALAR> (default: -1) Maximum number of characters allowed.
+3 - _allowEmpty <BOOLEAN> (default: true) Allows the value to be equal to "".
+4 - _fallbackValue: <STRING> (default: "") Strings wich is set if empty input value is detected.
+5 - _replace: <BOOLEAN> (default: true) If _textOrControl is a <STRING>, it will return the string with only the valid characters, if it is a <CONTROL>, it will replace the text inside the control with the valid text.
 
 ```
 
@@ -26,25 +26,33 @@ To add the input validation on the control, add the "onKeyDown" and "onKeyUp" ev
 ## Example:
 ### In Script:
 ```SQF
-['My Super Text!', ['A-Z', 'a-z', '0-9'], -1, '...', true] call Gems_fnc_validateInput; 
+['My Super Text!', ['A-Z', 'a-z', '0-9'], -1, false, '...', true] call Gems_fnc_validateInput; 
 // Returns: "MySuperText"
 // Alows an unlimited number of alpha-numerical characters to be inputed.
 
-['My Super Text!', ['A-Z', 'a-z', '0-9', ' '], -1, '...', true] call Gems_fnc_validateInput; 
+['My Super Text!', ['A-Z', 'a-z', '0-9', ' '], -1, false, '...', true] call Gems_fnc_validateInput; 
 // Returns: "My Super Text"
 // Alows an unlimited number of alpha-numerical + [spaces] characters to be inputed.
 
-['My Super Text!', ['A-Z', 'a-z', '0-9', ' '], 2, '...', true] call Gems_fnc_validateInput; 
+['My Super Text!', ['A-Z', 'a-z', '0-9', ' '], 2, false, '...', true] call Gems_fnc_validateInput; 
 // Returns: "My"
 // Alows 2 alpha-numerical + [spaces] characters to be inputed.
 
-['My Super Text!', ['_'], -1, '...', true] call Gems_fnc_validateInput; 
+['My Super Text!', ['_'], -1, false, '...', true] call Gems_fnc_validateInput; 
 // Returns: "..."
 // Only allow '_' to be inputed but you can add as many as you want. If text is not good, will return '...'.
 
-['My Super Text!', ['_'], -1, '...', false] call Gems_fnc_validateInput; 
+['My Super Text!', ['_'], -1, false, '...', false] call Gems_fnc_validateInput; 
 // Returns: false
 // Only allow '_' to be inputed but you can add as many as you want. If text is not good, will return false, else, it will return true.
+
+['', ['A-Z', 'a-z', '0-9', ' '], -1, false, '...', true] call Gems_fnc_validateInput; 
+// Returns: "..."
+// Alows an unlimited number of alpha-numerical + [spaces] characters to be inputed but if empty, will return '...'
+
+['', ['A-Z', 'a-z', '0-9', ' '], -1, true, '...', true] call Gems_fnc_validateInput; 
+// Returns: "..."
+// Alows an unlimited number of alpha-numerical + [spaces] characters to be inputed but if empty, will return ''
 ```
 
 ### In Configs:
